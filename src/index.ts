@@ -1,6 +1,21 @@
-export const sum = (a: number, b: number) => {
-  if ('development' === process.env.NODE_ENV) {
-    console.log('boop');
+import { Observables } from "./observable/observable";
+
+declare global {
+  interface Window {
+    __SharedService__: SharedService;
   }
-  return a + b;
-};
+}
+
+export class SharedService extends Observables {
+
+  constructor(window: Window) {
+    super();
+    if (window.__SharedService__) Object.assign(this, window.__SharedService__)
+    else {
+      /**
+       * Happens on once first init.
+       */
+      window.__SharedService__ = this;
+    };
+  }
+}

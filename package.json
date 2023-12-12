@@ -23,7 +23,6 @@
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
-  "peerDependencies": {},
   "husky": {
     "hooks": {
       "pre-commit": "tsdx lint"
@@ -37,19 +36,20 @@
   },
   "name": "spa-personal-shared-service",
   "author": "Matthew Grady",
-  "module": "dist/spa-personal-shared-service-1.esm.js",
+  "module": "dist/spa-personal-shared-service.esm.js",
   "size-limit": [
     {
-      "path": "dist/spa-personal-shared-service-1.cjs.production.min.js",
+      "path": "dist/spa-personal-shared-service.cjs.production.min.js",
       "limit": "10 KB"
     },
     {
-      "path": "dist/spa-personal-shared-service-1.esm.js",
+      "path": "dist/spa-personal-shared-service.esm.js",
       "limit": "10 KB"
     }
   ],
   "devDependencies": {
     "@size-limit/preset-small-lib": "^11.0.1",
+    "@types/uuid": "^9.0.7",
     "husky": "^8.0.3",
     "size-limit": "^11.0.1",
     "tsdx": "^0.14.1",
@@ -59,5 +59,9 @@
   "bugs": {
     "url": "https://github.com/coffeestained/spa-personal-shared-service/issues"
   },
-  "homepage": "https://github.com/coffeestained/spa-personal-shared-service#readme"
+  "homepage": "https://github.com/coffeestained/spa-personal-shared-service#readme",
+  "dependencies": {
+    "rxjs": "^7.8.1",
+    "uuid": "^9.0.1"
+  }
 }
