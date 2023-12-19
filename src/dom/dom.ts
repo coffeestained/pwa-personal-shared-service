@@ -41,17 +41,17 @@ export class Dom {
 
   private leftIntoViewIntersection(element: any) {
     if (element.isIntersecting) {
-      element.target.classList.add('active__leftIntoView');
+      element.classList.add('active__leftIntoView');
     } else {
-      element.target.classList.remove('active__leftIntoView');
+      element.classList.remove('active__leftIntoView');
     }
   }
 
   private downIntoIntersection(element: any) {
     if (element.isIntersecting) {
-      element.target.classList.add('active__downIntoView');
+      element.classList.add('active__downIntoView');
     } else {
-      element.target.classList.remove('active__downIntoView');
+      element.classList.remove('active__downIntoView');
     }
   }
 }
