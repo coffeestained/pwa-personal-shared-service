@@ -1,3 +1,4 @@
+import { Dom } from "./dom/dom";
 import { Observables } from "./observable/observable";
 import { Workers } from "./worker/worker";
 
@@ -12,6 +13,7 @@ export class SharedService {
   // Is set on first instance in a window
   classes?: {
     Observables: Observables,
+    Dom: Dom,
     Workers: Workers
   }
 
@@ -25,6 +27,7 @@ export class SharedService {
       window.__SharedService__.classes = {
         Observables: new Observables(),
         Workers: new Workers(),
+        Dom: new Dom()
       }
     };
   }

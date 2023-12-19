@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/coffeestained/spa-personal-shared-service.git"
+    "url": "git+ssh://git@github.com/coffeestained/pwa-personal-shared-service.git"
   },
   "scripts": {
     "build": "tsc",
