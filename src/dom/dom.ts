@@ -4,8 +4,8 @@ type Available =
 
 export class Dom {
 
-  private _leftIntoViewObserver: IntersectionObserver;
-  private _downIntoViewObserver: IntersectionObserver;
+  public _leftIntoViewObserver = new IntersectionObserver(this.leftIntoViewIntersection);
+  public _downIntoViewObserver = new IntersectionObserver(this.downIntoIntersection);
 
   constructor() {
     const styleSheet = document.createElement("style")
@@ -32,10 +32,8 @@ export class Dom {
     }
     `
     document.head.appendChild(styleSheet);
-
-    this._leftIntoViewObserver = new IntersectionObserver(this.leftIntoViewIntersection);
-    this._downIntoViewObserver = new IntersectionObserver(this.downIntoIntersection);
   }
+
   public register(type: Available, element: any) {
     if (type === "downIntoView") this._downIntoViewObserver.observe(element);
     if (type === "leftIntoView") this._leftIntoViewObserver.observe(element);
