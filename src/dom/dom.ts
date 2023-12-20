@@ -10,7 +10,7 @@ export class Dom {
   constructor() {
     const styleSheet = document.createElement("style")
     styleSheet.innerText = `
-    .base_leftIntoView {
+    .base__leftIntoView {
       transition: all .5s;
       position: relative;
       opacity: 0;
