@@ -39,26 +39,28 @@ export class Dom {
     if (type === "leftIntoView") this._leftIntoViewObserver.observe(element);
   }
 
-  private leftIntoViewIntersection(element: any) {
-    console.log(element)
-    if (element && element.classList) {
-      if (element.isIntersecting) {
-        element.classList.add('active__leftIntoView');
-      } else {
-        element.classList.remove('active__leftIntoView');
+  private leftIntoViewIntersection(elements: any) {
+    elements.map((element: any) => {
+      if (element && element.classList) {
+        if (element.isIntersecting) {
+          element.classList.add('active__leftIntoView');
+        } else {
+          element.classList.remove('active__leftIntoView');
+        }
       }
-    }
+    });
   }
 
-  private downIntoIntersection(element: any) {
-    console.log(element)
-    if (element && element.classList) {
-      if (element.isIntersecting) {
-        element.classList.add('active__downIntoView');
-      } else {
-        element.classList.remove('active__downIntoView');
+  private downIntoIntersection(elements: any) {
+    elements.map((element: any) => {
+      if (element && element.classList) {
+        if (element.isIntersecting) {
+          element.classList.add('active__downIntoView');
+        } else {
+          element.classList.remove('active__downIntoView');
+        }
       }
-    }
+    });
   }
 }
 
