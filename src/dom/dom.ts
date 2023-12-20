@@ -41,7 +41,8 @@ export class Dom {
 
   private leftIntoViewIntersection(elements: any) {
     elements.map((element: any) => {
-      if (element && element.classList) {
+      console.log(element)
+      if (element) {
         if (element.isIntersecting) {
           element.classList.add('active__leftIntoView');
         } else {
@@ -53,7 +54,8 @@ export class Dom {
 
   private downIntoIntersection(elements: any) {
     elements.map((element: any) => {
-      if (element && element.classList) {
+      console.log(element)
+      if (element) {
         if (element.isIntersecting) {
           element.classList.add('active__downIntoView');
         } else {
