@@ -41,19 +41,23 @@ export class Dom {
 
   private leftIntoViewIntersection(element: any) {
     console.log(element)
-    if (element.isIntersecting) {
-      element.classList.add('active__leftIntoView');
-    } else {
-      element.classList.remove('active__leftIntoView');
+    if (element && element.classList) {
+      if (element.isIntersecting) {
+        element.classList.add('active__leftIntoView');
+      } else {
+        element.classList.remove('active__leftIntoView');
+      }
     }
   }
 
   private downIntoIntersection(element: any) {
     console.log(element)
-    if (element.isIntersecting) {
-      element.classList.add('active__downIntoView');
-    } else {
-      element.classList.remove('active__downIntoView');
+    if (element && element.classList) {
+      if (element.isIntersecting) {
+        element.classList.add('active__downIntoView');
+      } else {
+        element.classList.remove('active__downIntoView');
+      }
     }
   }
 }
