@@ -40,6 +40,7 @@ export class Dom {
   }
 
   private leftIntoViewIntersection(element: any) {
+    console.log(element)
     if (element.isIntersecting) {
       element.classList.add('active__leftIntoView');
     } else {
@@ -48,6 +49,7 @@ export class Dom {
   }
 
   private downIntoIntersection(element: any) {
+    console.log(element)
     if (element.isIntersecting) {
       element.classList.add('active__downIntoView');
     } else {
