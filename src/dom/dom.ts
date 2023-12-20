@@ -44,9 +44,9 @@ export class Dom {
       console.log(element)
       if (element) {
         if (element.isIntersecting) {
-          element.classList.add('active__leftIntoView');
+          element.target.classList.add('active__leftIntoView');
         } else {
-          element.classList.remove('active__leftIntoView');
+          element.target.classList.remove('active__leftIntoView');
         }
       }
     });
@@ -57,9 +57,9 @@ export class Dom {
       console.log(element)
       if (element) {
         if (element.isIntersecting) {
-          element.classList.add('active__downIntoView');
+          element.target.classList.add('active__downIntoView');
         } else {
-          element.classList.remove('active__downIntoView');
+          element.target.classList.remove('active__downIntoView');
         }
       }
     });
