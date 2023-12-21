@@ -11,7 +11,7 @@ export class Dom {
     {
       root: null,
       rootMargin: "0px",
-      threshold: 0,
+      threshold: 1,
     }
   );
   public _downIntoViewObserver = new IntersectionObserver(
@@ -19,7 +19,7 @@ export class Dom {
     {
       root: null,
       rootMargin: "0px",
-      threshold: 0,
+      threshold: 1,
     }
   );
   public _stagingObserver = new IntersectionObserver(
@@ -27,7 +27,7 @@ export class Dom {
     {
       root: null,
       rootMargin: "0px",
-      threshold: 0,
+      threshold: 1,
     }
   );
 
@@ -95,7 +95,7 @@ export class Dom {
         {
           root: null,
           rootMargin: "0px",
-          threshold: 0,
+          threshold: 1,
         }
       );
       this[`_${className}`].observe(element);
