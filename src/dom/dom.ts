@@ -1,5 +1,7 @@
 type Available =
   "leftIntoView"
+  | "rightIntoView"
+  | "upIntoView"
   | "downIntoView"
   | "staging"
   | "class";
@@ -11,11 +13,27 @@ export class Dom {
     {
       root: null,
       rootMargin: "0px",
-      threshold: .75,
+      threshold: .35,
+    }
+  );
+  public _rightIntoViewObserver = new IntersectionObserver(
+    this.rightIntoViewIntersection,
+    {
+      root: null,
+      rootMargin: "0px",
+      threshold: .35,
     }
   );
   public _downIntoViewObserver = new IntersectionObserver(
     this.downIntoIntersection,
+    {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0,
+    }
+  );
+  public _upIntoViewObserver = new IntersectionObserver(
+    this.upIntoIntersection,
     {
       root: null,
       rootMargin: "0px",
@@ -27,7 +45,7 @@ export class Dom {
     {
       root: null,
       rootMargin: "0px",
-      threshold: .75,
+      threshold: .35,
     }
   );
 
@@ -44,6 +62,16 @@ export class Dom {
       opacity: 1;
       left: 0;
     }
+    .base__rightIntoView {
+      transition: all .5s;
+      position: relative;
+      opacity: 0;
+      right: 150px;
+    }
+    .active__rightIntoView {
+      opacity: 1;
+      right: 0;
+    }
     .base__downIntoView {
       transition: all .5s;
       position: relative;
@@ -53,6 +81,16 @@ export class Dom {
     .active__downIntoView {
       opacity: 1;
       top: 0;
+    }
+    .base__upIntoView {
+      transition: all .5s;
+      position: relative;
+      opacity: 0;
+      bottom: 150px;
+    }
+    .active__upIntoView {
+      opacity: 1;
+      bottom: 0;
     }
 
     .base__staging {
@@ -121,6 +159,18 @@ export class Dom {
     });
   }
 
+  private rightIntoViewIntersection(elements: any) {
+    elements.map((element: any) => {
+      if (element) {
+        if (element.isIntersecting) {
+          element.target.classList.add('active__rightIntoView');
+        } else if (!element.isIntersecting) {
+          element.target.classList.remove('active__rightIntoView');
+        }
+      }
+    });
+  }
+
   private downIntoIntersection(elements: any) {
     elements.map((element: any) => {
       if (element) {
@@ -128,6 +178,18 @@ export class Dom {
           element.target.classList.add('active__downIntoView');
         } else if (!element.isIntersecting) {
           element.target.classList.remove('active__downIntoView');
+        }
+      }
+    });
+  }
+
+  private upIntoIntersection(elements: any) {
+    elements.map((element: any) => {
+      if (element) {
+        if (element.isIntersecting) {
+          element.target.classList.add('active__upIntoView');
+        } else if (!element.isIntersecting) {
+          element.target.classList.remove('active__upIntoView');
         }
       }
     });
