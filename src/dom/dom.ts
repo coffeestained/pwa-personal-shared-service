@@ -62,7 +62,7 @@ export class Dom {
       if (element) {
         if (element.isIntersecting && element.intersectionRect.y > 30) {
           element.target.classList.add('active__leftIntoView');
-        } else if (!element.isIntersecting && element.intersectionRect.y < 0) {
+        } else if (!element.isIntersecting && element.intersectionRect.y <= 0) {
           element.target.classList.remove('active__leftIntoView');
         }
       }
@@ -74,7 +74,7 @@ export class Dom {
       if (element) {
         if (element.isIntersecting && element.intersectionRect.y > 30) {
           element.target.classList.add('active__downIntoView');
-        } else if (!element.isIntersecting && element.intersectionRect.y < 0) {
+        } else if (!element.isIntersecting && element.intersectionRect.y <= 0) {
           element.target.classList.remove('active__downIntoView');
         }
       }
@@ -84,6 +84,7 @@ export class Dom {
   private stagingIntersection(elements: any) {
     elements.map((element: any) => {
       if (element) {
+        console.log(element.intersectionRect.y)
         if ((element.isIntersecting) && ((element.intersectionRect.y < 30 && element.intersectionRect.y > 1))) {
           element.target.classList.add('base__staging');
         } else {
