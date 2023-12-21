@@ -112,7 +112,7 @@ export class Dom {
     document.head.appendChild(styleSheet);
   }
 
-  public register(type: Available, element: any, threshold = 1, className = null) {
+  public register(type: Available, element: any, threshold = 0, className = null) {
     console.log(element)
     element['threshold'] = threshold;
     if (type === "downIntoView") this._downIntoViewObserver.observe(element);
@@ -154,6 +154,7 @@ export class Dom {
   private leftIntoViewIntersection(elements: any) {
     elements.map((element: any) => {
       if (element) {
+        console.log(element.intersectionRatio, element.target)
         if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
           element.target.classList.add('active__leftIntoView');
         } else if (!element.isIntersecting) {
