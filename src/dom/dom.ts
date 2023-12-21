@@ -1,13 +1,35 @@
 type Available =
   "leftIntoView"
   | "downIntoView"
-  | "staging";
+  | "staging"
+  | "class";
 
 export class Dom {
 
-  public _leftIntoViewObserver = new IntersectionObserver(this.leftIntoViewIntersection);
-  public _downIntoViewObserver = new IntersectionObserver(this.downIntoIntersection);
-  public _stagingObserver = new IntersectionObserver(this.stagingIntersection);
+  public _leftIntoViewObserver = new IntersectionObserver(
+    this.leftIntoViewIntersection,
+    {
+      root: null,
+      rootMargin: "0",
+      threshold: .25,
+    }
+  );
+  public _downIntoViewObserver = new IntersectionObserver(
+    this.downIntoIntersection,
+    {
+      root: null,
+      rootMargin: "0",
+      threshold: .25,
+    }
+  );
+  public _stagingObserver = new IntersectionObserver(
+    this.stagingIntersection,
+    {
+      root: null,
+      rootMargin: "0",
+      threshold: .25,
+    }
+  );
 
   constructor() {
     const styleSheet = document.createElement("style")
@@ -36,6 +58,7 @@ export class Dom {
     .base__staging {
       animation-name: bounce;
       animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
+      animation-iteration-count: 1;
     }
 
     @keyframes bounce {
@@ -51,18 +74,47 @@ export class Dom {
     document.head.appendChild(styleSheet);
   }
 
-  public register(type: Available, element: any) {
+  public register(type: Available, element: any, className = null) {
     if (type === "downIntoView") this._downIntoViewObserver.observe(element);
     if (type === "leftIntoView") this._leftIntoViewObserver.observe(element);
     if (type === "staging") this._stagingObserver.observe(element);
+    if (type === "class") {
+      this[`${className}`] = (elements) => {
+        elements.map((element: any) => {
+          if (element) {
+            if (element.isIntersecting) {
+              element.target.classList.add('active__leftIntoView');
+            } else if (!element.isIntersecting) {
+              element.target.classList.remove('active__leftIntoView');
+            }
+          }
+        });
+      }
+      this[`_${className}`] = new IntersectionObserver(
+        this[`${className}`],
+        {
+          root: null,
+          rootMargin: "0",
+          threshold: .25,
+        }
+      );
+      this[`_${className}`].observe(element);
+    };
+  }
+
+  public destroy(type: Available, element: any, className = null) {
+    if (type === "downIntoView") this._downIntoViewObserver.unobserve(element);
+    if (type === "leftIntoView") this._leftIntoViewObserver.unobserve(element);
+    if (type === "staging") this._stagingObserver.unobserve(element);
+    if (type === "class") this[`_${className}`].unobserve(element);
   }
 
   private leftIntoViewIntersection(elements: any) {
     elements.map((element: any) => {
       if (element) {
-        if (element.isIntersecting && element.intersectionRect.y > 30) {
+        if (element.isIntersecting) {
           element.target.classList.add('active__leftIntoView');
-        } else if (!element.isIntersecting && element.intersectionRect.y <= 0) {
+        } else if (!element.isIntersecting) {
           element.target.classList.remove('active__leftIntoView');
         }
       }
@@ -72,9 +124,9 @@ export class Dom {
   private downIntoIntersection(elements: any) {
     elements.map((element: any) => {
       if (element) {
-        if (element.isIntersecting && element.intersectionRect.y > 30) {
+        if (element.isIntersecting) {
           element.target.classList.add('active__downIntoView');
-        } else if (!element.isIntersecting && element.intersectionRect.y <= 0) {
+        } else if (!element.isIntersecting) {
           element.target.classList.remove('active__downIntoView');
         }
       }
@@ -85,7 +137,7 @@ export class Dom {
     elements.map((element: any) => {
       if (element) {
         console.log(element.intersectionRect.y)
-        if ((element.isIntersecting) && ((element.intersectionRect.y < 30 && element.intersectionRect.y > 1))) {
+        if ((element.isIntersecting)) {
           element.target.classList.add('base__staging');
         } else {
           element.target.classList.remove('base__staging');
