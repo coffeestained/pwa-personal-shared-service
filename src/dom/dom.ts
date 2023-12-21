@@ -10,7 +10,7 @@ export class Dom {
     this.leftIntoViewIntersection,
     {
       root: null,
-      rootMargin: "0",
+      rootMargin: "0px",
       threshold: .25,
     }
   );
@@ -18,7 +18,7 @@ export class Dom {
     this.downIntoIntersection,
     {
       root: null,
-      rootMargin: "0",
+      rootMargin: "0px",
       threshold: .25,
     }
   );
@@ -26,7 +26,7 @@ export class Dom {
     this.stagingIntersection,
     {
       root: null,
-      rootMargin: "0",
+      rootMargin: "0px",
       threshold: .25,
     }
   );
