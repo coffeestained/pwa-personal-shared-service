@@ -114,7 +114,9 @@ export class Dom {
 
   public register(type: Available, element: any, className = null) {
     if (type === "downIntoView") this._downIntoViewObserver.observe(element);
+    if (type === "upIntoView") this._upIntoViewObserver.observe(element);
     if (type === "leftIntoView") this._leftIntoViewObserver.observe(element);
+    if (type === "rightIntoView") this._rightIntoViewObserver.observe(element);
     if (type === "staging") this._stagingObserver.observe(element);
     if (type === "class") {
       this[`${className}`] = (elements) => {
