@@ -114,7 +114,7 @@ export class Dom {
 
   public register(type: Available, element: any, threshold = 0, className = null) {
     console.log(element)
-    element.target['threshold'] = threshold;
+    element['threshold'] = threshold;
     if (type === "downIntoView") this._downIntoViewObserver.observe(element);
     if (type === "upIntoView") this._upIntoViewObserver.observe(element);
     if (type === "leftIntoView") this._leftIntoViewObserver.observe(element);
