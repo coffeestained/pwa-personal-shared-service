@@ -112,7 +112,8 @@ export class Dom {
     document.head.appendChild(styleSheet);
   }
 
-  public register(type: Available, element: any, className = null) {
+  public register(type: Available, element: any, threshold = 0, className = null) {
+    element.target['threshold'] = threshold;
     if (type === "downIntoView") this._downIntoViewObserver.observe(element);
     if (type === "upIntoView") this._upIntoViewObserver.observe(element);
     if (type === "leftIntoView") this._leftIntoViewObserver.observe(element);
@@ -122,7 +123,7 @@ export class Dom {
       this[`${className}`] = (elements) => {
         elements.map((element: any) => {
           if (element) {
-            if (element.isIntersecting) {
+            if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
               element.target.classList.add('active__leftIntoView');
             } else if (!element.isIntersecting) {
               element.target.classList.remove('active__leftIntoView');
@@ -152,7 +153,7 @@ export class Dom {
   private leftIntoViewIntersection(elements: any) {
     elements.map((element: any) => {
       if (element) {
-        if (element.isIntersecting) {
+        if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
           element.target.classList.add('active__leftIntoView');
         } else if (!element.isIntersecting) {
           element.target.classList.remove('active__leftIntoView');
@@ -164,7 +165,7 @@ export class Dom {
   private rightIntoViewIntersection(elements: any) {
     elements.map((element: any) => {
       if (element) {
-        if (element.isIntersecting) {
+        if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
           element.target.classList.add('active__rightIntoView');
         } else if (!element.isIntersecting) {
           element.target.classList.remove('active__rightIntoView');
@@ -176,7 +177,7 @@ export class Dom {
   private downIntoIntersection(elements: any) {
     elements.map((element: any) => {
       if (element) {
-        if (element.isIntersecting) {
+        if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
           element.target.classList.add('active__downIntoView');
         } else if (!element.isIntersecting) {
           element.target.classList.remove('active__downIntoView');
@@ -188,7 +189,7 @@ export class Dom {
   private upIntoIntersection(elements: any) {
     elements.map((element: any) => {
       if (element) {
-        if (element.isIntersecting) {
+        if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
           element.target.classList.add('active__upIntoView');
         } else if (!element.isIntersecting) {
           element.target.classList.remove('active__upIntoView');
@@ -201,7 +202,7 @@ export class Dom {
     elements.map((element: any) => {
       if (element) {
         console.log(element.intersectionRect.y)
-        if ((element.isIntersecting)) {
+        if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
           element.target.classList.add('base__staging');
         } else {
           element.target.classList.remove('base__staging');
