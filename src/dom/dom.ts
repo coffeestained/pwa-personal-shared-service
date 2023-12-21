@@ -112,7 +112,7 @@ export class Dom {
     document.head.appendChild(styleSheet);
   }
 
-  public register(type: Available, element: any, threshold = 0, className = null) {
+  public register(type: Available, element: any, threshold = 1, className = null) {
     console.log(element)
     element['threshold'] = threshold;
     if (type === "downIntoView") this._downIntoViewObserver.observe(element);
