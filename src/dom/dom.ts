@@ -94,7 +94,7 @@ export class Dom {
         this[`${className}`],
         {
           root: null,
-          rootMargin: "0",
+          rootMargin: "0px",
           threshold: .25,
         }
       );
