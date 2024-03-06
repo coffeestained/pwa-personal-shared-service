@@ -12,7 +12,7 @@ export class Dom {
     this.leftIntoViewIntersection,
     {
       root: null,
-      rootMargin: "0px",
+      rootMargin: "100px",
       threshold: .35,
     }
   );
@@ -20,7 +20,7 @@ export class Dom {
     this.rightIntoViewIntersection,
     {
       root: null,
-      rootMargin: "0px",
+      rootMargin: "100px",
       threshold: .35,
     }
   );
@@ -28,7 +28,7 @@ export class Dom {
     this.downIntoIntersection,
     {
       root: null,
-      rootMargin: "0px",
+      rootMargin: "100px",
       threshold: 0,
     }
   );
@@ -36,7 +36,7 @@ export class Dom {
     this.upIntoIntersection,
     {
       root: null,
-      rootMargin: "0px",
+      rootMargin: "100px",
       threshold: 0,
     }
   );
@@ -44,7 +44,7 @@ export class Dom {
     this.stagingIntersection,
     {
       root: null,
-      rootMargin: "0px",
+      rootMargin: "100px",
       threshold: .35,
     }
   );
@@ -125,9 +125,9 @@ export class Dom {
           element.lastTimestamp = new Date().getTime();
           if (element && (element.lastTimestamp + 1000 > new Date().getTime())) {
             if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
-              element.target.classList.add('active__leftIntoView');
+              element.target.classList.add(className);
             } else if (!element.isIntersecting) {
-              element.target.classList.remove('active__leftIntoView');
+              element.target.classList.remove(className);
             }
           }
         });
