@@ -25,18 +25,18 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "spa-personal-shared-service",
+  "name": "pwa-personal-shared-service",
   "author": "Matthew Grady",
-  "module": "dist/spa-personal-shared-service.esm.js",
+  "module": "dist/pwa-personal-shared-service.esm.js",
   "devDependencies": {
     "rxjs": "^7.8.1",
     "tslib": "^2.6.2",
     "typescript": "^5.3.3"
   },
   "bugs": {
-    "url": "https://github.com/coffeestained/spa-personal-shared-service/issues"
+    "url": "https://github.com/coffeestained/pwa-personal-shared-service/issues"
   },
-  "homepage": "https://github.com/coffeestained/spa-personal-shared-service#readme",
+  "homepage": "https://github.com/coffeestained/pwa-personal-shared-service#readme",
   "dependencies": {
     "rxjs": "^7.8.1"
   }

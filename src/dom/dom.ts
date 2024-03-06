@@ -113,7 +113,6 @@ export class Dom {
   }
 
   public register(type: Available, element: any, threshold = 0, className = null) {
-    console.log(element)
     element['threshold'] = threshold;
     if (type === "downIntoView") this._downIntoViewObserver.observe(element);
     if (type === "upIntoView") this._upIntoViewObserver.observe(element);
@@ -123,7 +122,8 @@ export class Dom {
     if (type === "class") {
       this[`${className}`] = (elements) => {
         elements.map((element: any) => {
-          if (element) {
+          element.lastTimestamp = new Date().getTime();
+          if (element && (element.lastTimestamp + 1000 > new Date().getTime())) {
             if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
               element.target.classList.add('active__leftIntoView');
             } else if (!element.isIntersecting) {
@@ -153,7 +153,8 @@ export class Dom {
 
   private leftIntoViewIntersection(elements: any) {
     elements.map((element: any) => {
-      if (element) {
+      element.lastTimestamp = new Date().getTime();
+      if (element && (element.lastTimestamp + 1000 > new Date().getTime())) {
         console.log(element.intersectionRatio, element.target)
         if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
           element.target.classList.add('active__leftIntoView');
@@ -166,7 +167,8 @@ export class Dom {
 
   private rightIntoViewIntersection(elements: any) {
     elements.map((element: any) => {
-      if (element) {
+      element.lastTimestamp = new Date().getTime();
+      if (element && (element.lastTimestamp + 1000 > new Date().getTime())) {
         if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
           element.target.classList.add('active__rightIntoView');
         } else if (!element.isIntersecting) {
@@ -178,7 +180,8 @@ export class Dom {
 
   private downIntoIntersection(elements: any) {
     elements.map((element: any) => {
-      if (element) {
+      element.lastTimestamp = new Date().getTime();
+      if (element && (element.lastTimestamp + 1000 > new Date().getTime())) {
         if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
           element.target.classList.add('active__downIntoView');
         } else if (!element.isIntersecting) {
@@ -190,7 +193,8 @@ export class Dom {
 
   private upIntoIntersection(elements: any) {
     elements.map((element: any) => {
-      if (element) {
+      element.lastTimestamp = new Date().getTime();
+      if (element && (element.lastTimestamp + 1000 > new Date().getTime())) {
         if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
           element.target.classList.add('active__upIntoView');
         } else if (!element.isIntersecting) {
@@ -202,7 +206,8 @@ export class Dom {
 
   private stagingIntersection(elements: any) {
     elements.map((element: any) => {
-      if (element) {
+      element.lastTimestamp = new Date().getTime();
+      if (element && (element.lastTimestamp + 1000 > new Date().getTime())) {
         console.log(element.intersectionRect.y)
         if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
           element.target.classList.add('base__staging');
