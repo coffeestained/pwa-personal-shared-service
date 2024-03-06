@@ -12,40 +12,40 @@ export class Dom {
     this.leftIntoViewIntersection,
     {
       root: null,
-      rootMargin: "100px",
-      threshold: .35,
+      rootMargin: "0px",
+      threshold: .2,
     }
   );
   public _rightIntoViewObserver = new IntersectionObserver(
     this.rightIntoViewIntersection,
     {
       root: null,
-      rootMargin: "100px",
-      threshold: .35,
+      rootMargin: "0px",
+      threshold: .2,
     }
   );
   public _downIntoViewObserver = new IntersectionObserver(
     this.downIntoIntersection,
     {
       root: null,
-      rootMargin: "100px",
-      threshold: 0,
+      rootMargin: "0px",
+      threshold: .2,
     }
   );
   public _upIntoViewObserver = new IntersectionObserver(
     this.upIntoIntersection,
     {
       root: null,
-      rootMargin: "100px",
-      threshold: 0,
+      rootMargin: "0px",
+      threshold: .2,
     }
   );
   public _stagingObserver = new IntersectionObserver(
     this.stagingIntersection,
     {
       root: null,
-      rootMargin: "100px",
-      threshold: .35,
+      rootMargin: "0px",
+      threshold: .2,
     }
   );
 
