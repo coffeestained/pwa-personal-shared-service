@@ -193,6 +193,7 @@ export class Dom {
 
   private upIntoIntersection(elements: any) {
     elements.map((element: any) => {
+      console.log(element.lastTimestamp, new Date().getTime());
       if (element && (!element.lastTimestamp || (element.lastTimestamp + 1000 > new Date().getTime()))){
         if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
           element.target.classList.add('active__upIntoView');
