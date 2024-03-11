@@ -122,13 +122,19 @@ export class Dom {
     if (type === "class") {
       this[`${className}`] = (elements) => {
         elements.map((element: any) => {
-          if (element && (!element.lastTimestamp || (element.lastTimestamp + 1000 > new Date().getTime()))) {
+          if (
+            element && 
+            (
+                !element.target.hasAttribute('lastTimestamp') || 
+                (Number(element.target.getAttribute('lastTimestamp')) + 333 < new Date().getTime())
+            )
+        ) {
             if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
               element.target.classList.add(className);
             } else if (!element.isIntersecting) {
               element.target.classList.remove(className);
             }
-            element.lastTimestamp = new Date().getTime();
+            element.target.setAttribute('lastTimestamp', new Date().getTime());
           }
         });
       
@@ -152,69 +158,103 @@ export class Dom {
     if (type === "class") this[`_${className}`].unobserve(element);
   }
 
-  private leftIntoViewIntersection(elements: any) {
-    elements.map((element: any) => {
-      if (element && (!element.lastTimestamp || (element.lastTimestamp + 1000 > new Date().getTime()))){
-        if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
-          element.target.classList.add('active__leftIntoView');
-        } else if (!element.isIntersecting) {
-          element.target.classList.remove('active__leftIntoView');
+  private leftIntoViewIntersection(elements) {
+    elements.map((element) => {
+        if (
+            element && 
+            (
+                !element.target.hasAttribute('lastTimestamp') || 
+                (Number(element.target.getAttribute('lastTimestamp')) + 333 < new Date().getTime())
+            )
+        ) {
+            if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
+                element.target.classList.add('active__leftIntoView');
+            }
+            else if (!element.isIntersecting) {
+                element.target.classList.remove('active__leftIntoView');
+            }
+            element.target.setAttribute('lastTimestamp', new Date().getTime());
         }
-        element.lastTimestamp = new Date().getTime();
-      }
     });
-  }
+}
 
-  private rightIntoViewIntersection(elements: any) {
-    elements.map((element: any) => {
-      if (element && (!element.lastTimestamp || (element.lastTimestamp + 1000 > new Date().getTime()))){
-        if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
-          element.target.classList.add('active__rightIntoView');
-        } else if (!element.isIntersecting) {
-          element.target.classList.remove('active__rightIntoView');
+private rightIntoViewIntersection(elements) {
+    elements.map((element) => {
+        if (
+            element && 
+            (
+                !element.target.hasAttribute('lastTimestamp') || 
+                (Number(element.target.getAttribute('lastTimestamp')) + 333 < new Date().getTime())
+            )
+        ) {
+            if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
+                element.target.classList.add('active__rightIntoView');
+            }
+            else if (!element.isIntersecting) {
+                element.target.classList.remove('active__rightIntoView');
+            }
+            element.target.setAttribute('lastTimestamp', new Date().getTime());
         }
-        element.lastTimestamp = new Date().getTime();
-      }
     });
-  }
+}
 
-  private downIntoIntersection(elements: any) {
-    elements.map((element: any) => {
-      console.log(element.lastTimestamp, new Date().getTime());
-      if (element && (!element.lastTimestamp || (element.lastTimestamp + 1000 > new Date().getTime()))){
-        if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
-          element.target.classList.add('active__downIntoView');
-        } else if (!element.isIntersecting) {
-          element.target.classList.remove('active__downIntoView');
+private downIntoIntersection(elements) {
+    elements.map((element) => {
+        if (
+            element && 
+            (
+                !element.target.hasAttribute('lastTimestamp') || 
+                (Number(element.target.getAttribute('lastTimestamp')) + 333 < new Date().getTime())
+            )
+        ) {
+            if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
+                element.target.classList.add('active__downIntoView');
+            }
+            else if (!element.isIntersecting) {
+                element.target.classList.remove('active__downIntoView');
+            }
+            element.target.setAttribute('lastTimestamp', new Date().getTime());
         }
-        element.lastTimestamp = new Date().getTime();
-      }
     });
-  }
+}
 
-  private upIntoIntersection(elements: any) {
-    elements.map((element: any) => {
-      if (element && (!element.lastTimestamp || (element.lastTimestamp + 1000 > new Date().getTime()))){
-        if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
-          element.target.classList.add('active__upIntoView');
-        } else if (!element.isIntersecting) {
-          element.target.classList.remove('active__upIntoView');
+private upIntoIntersection(elements) {
+    elements.map((element) => {
+        if (
+            element && 
+            (
+                !element.target.hasAttribute('lastTimestamp') || 
+                (Number(element.target.getAttribute('lastTimestamp')) + 333 < new Date().getTime())
+            )
+        ) {
+            if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
+                element.target.classList.add('active__upIntoView');
+            }
+            else if (!element.isIntersecting) {
+                element.target.classList.remove('active__upIntoView');
+            }
+            element.target.setAttribute('lastTimestamp', new Date().getTime());
         }
-        element.lastTimestamp = new Date().getTime();
-      }
     });
-  }
+}
 
-  private stagingIntersection(elements: any) {
-    elements.map((element: any) => {
-      if (element && (!element.lastTimestamp || (element.lastTimestamp + 1000 > new Date().getTime()))){
-        if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
-          element.target.classList.add('base__staging');
-        } else {
-          element.target.classList.remove('base__staging');
+private stagingIntersection(elements) {
+    elements.map((element) => {
+        if (
+            element && 
+            (
+                !element.target.hasAttribute('lastTimestamp') || 
+                (Number(element.target.getAttribute('lastTimestamp')) + 333 < new Date().getTime())
+            )
+        ) {
+            if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
+                element.target.classList.add('base__staging');
+            }
+            else {
+                element.target.classList.remove('base__staging');
+            }
+            element.target.setAttribute('lastTimestamp', new Date().getTime());
         }
-        element.lastTimestamp = new Date().getTime();
-      }
     });
   }
 }
