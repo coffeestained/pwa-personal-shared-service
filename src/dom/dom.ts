@@ -126,7 +126,7 @@ export class Dom {
             element && 
             (
                 !element.target.hasAttribute('lastTimestamp') || 
-                (Number(element.target.getAttribute('lastTimestamp')) + 333 < new Date().getTime())
+                (Number(element.target.getAttribute('lastTimestamp')) + 67 < new Date().getTime())
             )
         ) {
             if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
@@ -164,7 +164,7 @@ export class Dom {
             element && 
             (
                 !element.target.hasAttribute('lastTimestamp') || 
-                (Number(element.target.getAttribute('lastTimestamp')) + 333 < new Date().getTime())
+                (Number(element.target.getAttribute('lastTimestamp')) + 67 < new Date().getTime())
             )
         ) {
             if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
@@ -184,7 +184,7 @@ private rightIntoViewIntersection(elements) {
             element && 
             (
                 !element.target.hasAttribute('lastTimestamp') || 
-                (Number(element.target.getAttribute('lastTimestamp')) + 333 < new Date().getTime())
+                (Number(element.target.getAttribute('lastTimestamp')) + 67 < new Date().getTime())
             )
         ) {
             if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
@@ -204,7 +204,7 @@ private downIntoIntersection(elements) {
             element && 
             (
                 !element.target.hasAttribute('lastTimestamp') || 
-                (Number(element.target.getAttribute('lastTimestamp')) + 333 < new Date().getTime())
+                (Number(element.target.getAttribute('lastTimestamp')) + 67 < new Date().getTime())
             )
         ) {
             if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
@@ -224,7 +224,7 @@ private upIntoIntersection(elements) {
             element && 
             (
                 !element.target.hasAttribute('lastTimestamp') || 
-                (Number(element.target.getAttribute('lastTimestamp')) + 333 < new Date().getTime())
+                (Number(element.target.getAttribute('lastTimestamp')) + 67 < new Date().getTime())
             )
         ) {
             if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
@@ -244,7 +244,7 @@ private stagingIntersection(elements) {
             element && 
             (
                 !element.target.hasAttribute('lastTimestamp') || 
-                (Number(element.target.getAttribute('lastTimestamp')) + 333 < new Date().getTime())
+                (Number(element.target.getAttribute('lastTimestamp')) + 67 < new Date().getTime())
             )
         ) {
             if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
