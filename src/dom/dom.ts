@@ -13,7 +13,7 @@ export class Dom {
     {
       root: null,
       rootMargin: "0px",
-      threshold: [.33,.66],
+      threshold: [.20,.90],
     }
   );
   public _rightIntoViewObserver = new IntersectionObserver(
@@ -21,7 +21,7 @@ export class Dom {
     {
       root: null,
       rootMargin: "0px",
-      threshold: [.33,.66],
+      threshold: [.20,.90],
     }
   );
   public _downIntoViewObserver = new IntersectionObserver(
@@ -29,7 +29,7 @@ export class Dom {
     {
       root: null,
       rootMargin: "0px",
-      threshold: [.33,.66],
+      threshold: [.20,.90],
     }
   );
   public _upIntoViewObserver = new IntersectionObserver(
@@ -37,7 +37,7 @@ export class Dom {
     {
       root: null,
       rootMargin: "0px",
-      threshold: [.33,.66],
+      threshold: [.20,.90],
     }
   );
   public _stagingObserver = new IntersectionObserver(
@@ -45,7 +45,7 @@ export class Dom {
     {
       root: null,
       rootMargin: "0px",
-      threshold: [.33,.66],
+      threshold: [.20,.90],
     }
   );
 
@@ -95,7 +95,7 @@ export class Dom {
 
     .base__staging {
       animation-name: bounce;
-      animation-timing-function: cubic-bezier(0[.33,.66]80, 0.840, 0.420, 1);
+      animation-timing-function: cubic-bezier(0[.20,.90]80, 0.840, 0.420, 1);
       animation-iteration-count: 1;
     }
 
