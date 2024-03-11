@@ -122,15 +122,16 @@ export class Dom {
     if (type === "class") {
       this[`${className}`] = (elements) => {
         elements.map((element: any) => {
-          element.lastTimestamp = new Date().getTime();
-          if (element && (element.lastTimestamp + 1000 > new Date().getTime())) {
+          if (element && (element.lastTimestamp || (element.lastTimestamp + 1000 > new Date().getTime()))) {
             if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
               element.target.classList.add(className);
             } else if (!element.isIntersecting) {
               element.target.classList.remove(className);
             }
+            element.lastTimestamp = new Date().getTime();
           }
         });
+      
       }
       this[`_${className}`] = new IntersectionObserver(
         this[`${className}`],
