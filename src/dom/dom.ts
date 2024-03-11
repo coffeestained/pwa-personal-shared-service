@@ -154,67 +154,65 @@ export class Dom {
 
   private leftIntoViewIntersection(elements: any) {
     elements.map((element: any) => {
-      element.lastTimestamp = new Date().getTime();
-      if (element && (element.lastTimestamp + 1000 > new Date().getTime())) {
-        console.log(element.intersectionRatio, element.target)
+      if (element && (!element.lastTimestamp || (element.lastTimestamp + 1000 > new Date().getTime()))){
         if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
           element.target.classList.add('active__leftIntoView');
         } else if (!element.isIntersecting) {
           element.target.classList.remove('active__leftIntoView');
         }
+        element.lastTimestamp = new Date().getTime();
       }
     });
   }
 
   private rightIntoViewIntersection(elements: any) {
     elements.map((element: any) => {
-      element.lastTimestamp = new Date().getTime();
-      if (element && (element.lastTimestamp + 1000 > new Date().getTime())) {
+      if (element && (!element.lastTimestamp || (element.lastTimestamp + 1000 > new Date().getTime()))){
         if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
           element.target.classList.add('active__rightIntoView');
         } else if (!element.isIntersecting) {
           element.target.classList.remove('active__rightIntoView');
         }
+        element.lastTimestamp = new Date().getTime();
       }
     });
   }
 
   private downIntoIntersection(elements: any) {
     elements.map((element: any) => {
-      element.lastTimestamp = new Date().getTime();
-      if (element && (element.lastTimestamp + 1000 > new Date().getTime())) {
+      if (element && (!element.lastTimestamp || (element.lastTimestamp + 1000 > new Date().getTime()))){
         if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
           element.target.classList.add('active__downIntoView');
         } else if (!element.isIntersecting) {
           element.target.classList.remove('active__downIntoView');
         }
+        element.lastTimestamp = new Date().getTime();
       }
     });
   }
 
   private upIntoIntersection(elements: any) {
     elements.map((element: any) => {
-      element.lastTimestamp = new Date().getTime();
-      if (element && (element.lastTimestamp + 1000 > new Date().getTime())) {
+      if (element && (!element.lastTimestamp || (element.lastTimestamp + 1000 > new Date().getTime()))){
         if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
           element.target.classList.add('active__upIntoView');
         } else if (!element.isIntersecting) {
           element.target.classList.remove('active__upIntoView');
         }
+        element.lastTimestamp = new Date().getTime();
       }
     });
   }
 
   private stagingIntersection(elements: any) {
     elements.map((element: any) => {
-      element.lastTimestamp = new Date().getTime();
-      if (element && (element.lastTimestamp + 1000 > new Date().getTime())) {
-        console.log(element.intersectionRect.y)
+      if (element && (!element.lastTimestamp || (element.lastTimestamp + 1000 > new Date().getTime()))){
         if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
           element.target.classList.add('base__staging');
         } else {
           element.target.classList.remove('base__staging');
         }
+        element.lastTimestamp = new Date().getTime();
       }
     });
   }
