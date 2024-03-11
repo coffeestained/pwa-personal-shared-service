@@ -122,7 +122,7 @@ export class Dom {
     if (type === "class") {
       this[`${className}`] = (elements) => {
         elements.map((element: any) => {
-          if (element && (element.lastTimestamp || (element.lastTimestamp + 1000 > new Date().getTime()))) {
+          if (element && (!element.lastTimestamp || (element.lastTimestamp + 1000 > new Date().getTime()))) {
             if (element.isIntersecting && element.intersectionRatio >= element.target['threshold']) {
               element.target.classList.add(className);
             } else if (!element.isIntersecting) {
